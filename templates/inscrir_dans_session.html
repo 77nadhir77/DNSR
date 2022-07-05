@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="contain mt-5 text-white" style="margin: 15px auto; height: 400px; display: flex; justify-content: center;">
+
+
+<form action="" style="display: flex;justify-content: center;align-items: center; flex-direction: column; width: 100%;" method="POST">
+    {% csrf_token %}
+    <div class="title" >Confirmer l'inscription</div>
+
+    <p>Voulez-vous s'inscrire dans cette session</p>
+
+
+    <div class="btn-group">
+        <input type="submit" class="btn btn-success mr-5" value="Confirmer">
+    <a href="{% url 'liste_session' centre.id %}" class="btn btn-danger">Annuler</a>
+    </div>
+    
+</form>
+</div>
+{% endblock %}

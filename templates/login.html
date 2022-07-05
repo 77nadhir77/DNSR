@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+
+
+
+<div class="wrap mt-5">
+    <div class="contain">
+      <div class="title">Connexion</div>
+      <div class="content">
+        <form method="POST" action="">
+            {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Nom d'utilisateur</span>
+              <input type="text" placeholder="Entrer le Nom d'utilisateur" name="username" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Mot de passe</span>
+              <input type="password" name="password" placeholder="Enter votre mot de passe" required>
+            </div>
+            </div>
+          <div class="button">
+            <input class="btn bg-warning" type="submit" value="Log in">
+          </div>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+          <div style="width: 100%;" class="alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+            <strong>Alert!   </strong><span>{{message}}</span>
+          </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    
+</div>
+
+
+
+
+{% endblock %}

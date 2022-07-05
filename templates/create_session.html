@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<section class="contain" style="margin: 15px auto;">
+    <div class="title">Ajouter une session</div>
+      <div class="liste-group">
+        <form method="POST" class="text-white">
+            {% csrf_token %}
+            {{form.date.label}}
+            {{form.date}}
+            {{form.nom.label}}
+            {{form.nom}}
+            {{form.heureDebut.label}}
+            {{form.heureDebut}}
+            {{form.heureFin.label}}
+            {{form.heureFin}}
+            
+          <div class="button-group mt-5">
+            <input type="submit" class="btn btn-warning" value="Ajouter" >
+            <a href="{% url 'session_calendar' %}" class="btn btn-success">Annuler</a>
+          </div>
+        </form>
+      </div>
+      
+</section>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<section class="liste" style="flex-direction: column; line-height: 45px;">
+    <h1 style="margin-bottom: 15px;" class="text-white">Recherche</h1>
+    <div class="search bg-transparent text-white w-100 p-5">
+        <form class="filter-search" method="GET">
+          <div class="w-100" style="display: flex; justify-content: space-evenly;">
+                   {{Filter.form.as_p}}
+          </div>
+          <input type="submit" value="Rechercher" class="btn btn-danger" style="height: 40px; position: relative; top: 25px; left: 20px;">
+        </form>
+    </div>
+<div class="table w-100" style="height: 80vh;">
+<table>
+    <thead>
+        <th style="text-align: center;">Id</th>
+        <th style="text-align: center;">nom</th>
+        <th style="text-align: center;">wilaya</th>
+        <th style="text-align: center;">commune</th>
+        <th style="text-align: center;">adresse</th>
+        <th style="text-align: center;">action</th>
+    </thead>
+    <tbody style="text-align: center;">
+        {% for centre in centres %}
+        <tr>
+            <td style="text-align: center;">{{centre.id}}</td>
+            <td style="text-align: center;">{{centre.nom}}</td>
+            <td style="text-align: center;">{{centre.wilaya}}</td>
+            <td style="text-align: center;">{{centre.commune}}</td>
+            <td style="text-align: center;">{{centre.adresse}}</td>
+            <td><a href="{% url 'liste_session' centre.id %}" class="btn btn-primary">Voir les sessions</a></td>
+        </tr>  
+        {% endfor %}
+    </tbody>
+    
+</table>
+</div>
+</section>
+
+
+{% endblock %}

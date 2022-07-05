@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<section style="margin: 15px auto" class="contain">
+    <div class="title">Ajouter une délégation wilaya</div>
+    <form method="POST">
+        {% csrf_token %}
+    <label class="text-white mt-5" for="nom">Nom :</label><input type="text" placeholder="Enter le nom de la délégation d'une wilaya" name="nom" class="form-control"> 
+    <label class="text-white mt-5" for="wilaya">Wilaya :</label><select id="wilaya" name="wilaya" placeholder="séléctioner une wilaya" class="form-control">
+    </select>
+    <button type="submit" class="btn btn-success mt-5 w-25">Ajouter</button>
+    <a href="{% url 'index' %}" class="btn btn-danger mt-5">Annuler</a>
+    </div>
+    </form>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="wrap" style="flex-direction: column; line-height: 45px;">
+    <a href="{% url 'session_calendar' %}" class="btn btn-info">Retourner vers le calendrier des sessions</a>
+<div class="table" style="height: 80vh;">
+<table>
+    <thead>
+        <th style="text-align: center;">Id</th>
+        <th style="text-align: center;">Nom de la session</th>
+        <th style="text-align: center;">Date</th>
+        <th style="text-align: center;">heure de début</th>
+        <th style="text-align: center;">heure de fin</th>
+        <th style="text-align: center;">action</th>
+    </thead>
+    <tbody>
+        {% for session in sessions %}
+        <tr>
+            <td style="text-align: center; font-size: large;">{{session.id}}</td>
+            <td style="text-align: center; font-size: large;">{{session.nom}}</td>
+            <td style="text-align: center; font-size: large;">{{session.date}}</td>
+            <td style="text-align: center; font-size: large;">{{session.heureDebut}}</td>
+            <td style="text-align: center; font-size: large;">{{session.heureFin}}</td>
+            <td><a href="{% url 'delete_this_session' session.id %}" class="btn btn-danger">Supprimer la session</a></td>
+        </tr>  
+        {% endfor %}
+    </tbody>
+{% endblock %}

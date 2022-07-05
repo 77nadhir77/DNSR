@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/css2.css' %}">
+    <link rel="stylesheet" href="{% static '/css/fontcss.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>délégation national à la sécurité routière | site web officiel</title>
+</head>
+<body style="background: url('{% static 'images/pic-1.jpg' %}'); background-repeat: no-repeat; background-position: center; background-attachment: fixed;">
+  {% if request.user.dwsr %}
+  {% include 'parts/nav_dwsr.html' %}
+  {% elif request.user.centreexamen %}
+  {% include 'parts/nav_centre.html' %}
+  {% elif request.user.dnsr %}
+  {% include 'parts/nav_dnsr.html' %}
+  {% elif request.user.candidat %}
+  {% include 'parts/nav_candidat.html' %}
+  {% else %}
+  {% include 'parts/nav_dnsr.html' %}
+  {% endif %}
+    {% block content %}
+    {% endblock %}
+
+<!-- calendar scripts -->
+
+<!-- --------------------- -->
+<script src="{% static '/js/bootstrap.js' %}"></script>
+<script src="{% static '/js/jQuery.js' %}"></script>
+<script src="{% static '/js/loader.js' %}"></script>
+<script src="{% static '/js/popper.min.js' %}"></script>
+<script src="{% static '/js/b99e675b6e.js' %}"></script>
+<script src="{% static '/js/main.min.js' %}"></script>
+<script src="{% static '/js/nav_bar.js' %}"></script>
+<script src="{% static '/js/calculateage.js' %}"></script>
+<!--sidebar scripts-->
+<script>
+
+
+
+
+
+
+$.getJSON("{% static '/js/wilaya.json' %}", function(data) {
+
+let wilayaSelectInput = document.querySelector('#wilaya');
+
+
+
+wilayaSelectInput.innerHTML = data.map(wilaya => '<option>' + wilaya.name + '</option>')
+});
+
+$.getJSON("{% static '/js/commune.json' %}", function(data) {
+
+let commune = document.querySelector('#commune');
+
+
+
+commune.innerHTML = data.map(c => '<option>' + c.commune_name + '</option>')
+});
+$.getJSON("{% static '/js/posatlCode.json' %}", function(data) {
+
+let codePostal = document.querySelector('#code_postal');
+
+
+
+codePostal.innerHTML = data.map(postCode => '<option>' + postCode.post_code + '</option>')
+});
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      },
+      initialDate: new Date(),
+      navLinks: true, // can click day/week names to navigate views
+      businessHours: true, // display business hours
+      editable: false,
+      selectable: true,
+      locale:'fr',
+      buttonText:{
+          today:'aujourd\'hui',
+          month:'le mois',
+          week:'la semaine',
+          day:'le jour',
+          list:'la liste',
+      },
+      events: {{sessions|safe}},
+        
+    });
+
+    calendar.render();
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

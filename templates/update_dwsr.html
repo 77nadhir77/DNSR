@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="wrap w-50 p-5" style="margin: 30px auto; background-color: #333; display: flex; justify-content: center; align-items: center;  color: #fff; opacity: 0.95;">
+
+
+    <form class="form" action="" method="POST">
+        {% csrf_token %}
+        <div class="form-row mt-5">
+        <label>Nom du delegation:</label>{{form.name}}
+        </div>
+        <div class="form-row mt-5">
+            <label>wilaya</label>{{form.wilaya}}
+        </div>
+
+        <input type="submit" value="Sauvgarder" class="btn btn-success mt-5">
+        <a href="{% url 'liste_des_dwsr' %}" class="btn btn-danger mt-5">Annuler</a>
+    </form>
+
+
+</div>
+
+
+{% endblock %}

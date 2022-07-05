@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="wrap">
+    <div class="contain mt-5">
+      <div class="title">Editer le profile de l'utilisateur</div>
+      <div class="content">
+        <form method='POST' action="">
+            {% csrf_token %}
+
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Nom d'utilisateur :</span>
+              {{form.username}}
+            </div>
+            <div class="input-box">
+              <span class="details">Adresse email :</span>
+             {{form.email}}
+            </div>
+        <div style="display: block;">
+            <input style="background: #ffc107;" class="btn btn-warning" type="submit" value="Confirmer">
+            <a href="{% url 'liste_des_user_dwsr' %}" class="btn btn-success">Annuler</a>
+        </div>
+        </form>
+      </div>
+    </div>  
+</div>
+
+
+{% endblock %}

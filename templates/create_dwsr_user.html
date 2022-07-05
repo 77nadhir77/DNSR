@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="wrap">
+    <div class="contain mt-5">
+      <div class="title">Inscription</div>
+      <div class="content">
+        <form method='POST' action="">
+            {% csrf_token %}
+
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Nom d'utilisateur :</span>
+              {{form.username}}
+            </div>
+            <div class="input-box">
+              <span class="details">Adresse email :</span>
+             {{form.email}}
+            </div>
+            <div class="input-box">
+              <span class="details">Mot de passe</span>
+              {{form.password1}}
+            </div>
+            <div class="input-box">
+              <span class="details">Confirmer le mot de passe</span>
+              {{form.password2}}
+            </div>
+        <div style="display: block;">
+            <input style="background: #ffc107;" class="btn btn-warning" type="submit" value="Confirmer">
+        </div>
+        </form>
+        
+        
+      </div>
+    </div>
+    <div class="text-white">
+      {{form.errors}}
+    </div>  
+</div>
+
+{% endblock %}

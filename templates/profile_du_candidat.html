@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<style>
+    @media screen and (max-width: 1080px) {
+        
+        .card-info ul{
+            padding: 5%;
+        }
+        
+    }
+</style>
+
+<section class="container" style="background-color: #fff; margin: 15px auto; display: flex; flex-wrap: wrap;">
+    
+    <div class="card-info">
+        <h3>Les informations personnelles</h3>
+        <ul class="mt-5">
+            <li><strong>NIN :</strong> {{candidat.nin}}</li>
+            <li><strong>Le Nom et prénom:</strong> {{candidat.nom}}, {{candidat.prenom}} </li>
+            <li><strong>La wilaya de naissance:</strong> {{candidat.wilaya}}</li>
+            <li><strong>Auto-école:</strong> {{candidat.auto_école}}</li>
+            <li><strong>Age:</strong>{{candidat.age}}</li>
+        </ul>
+    </div>
+    <div class="card-info">
+        <h3>Compte d'utilisateur</h3>
+        <ul class="mt-5">
+            <li><strong>Nom d'utilisateur: </strong>{{candidat.user.username}}</li>
+            <li><strong>Email:</strong>{{candidat.user.email}}</li>
+
+        </ul>
+        <a href="/change_password/" class="btn btn-info"><span style="font-size: 14px; display: block;" class="title">Changer le mot de passe</span></a>
+    </div>
+    <div class="card-info">
+        <h3>Les options</h3>
+        <ul class="mt-5">
+            
+            <li><a style="display: block; margin-top: 5px;" href="{% url 'index' %}" class="btn btn-outline-success">Page principale</a></li>
+        </ul>
+    </div>
+
+    <h3 style=" margin:50px auto;">les résultats:</h3>
+    <div class="container" style="background-color: #FFF; margin: 15px auto; display: flex; flex-wrap: wrap;">
+        
+            {% for epreuve in epreuves %}
+            {% if epreuve.résultat %}
+            <div class="card-info mt-5" style="background-color: rgb(220, 217, 217)">
+            <ul style="width: 100%">
+            <li><strong>Date: </strong>{{epreuve.date | date}}</li>
+            <li><strong>Epreuve: </strong>{{epreuve.nom | capfirst}}</li>
+            <li><strong>Examinateur: </strong>{{epreuve.Examinateur | capfirst}}</li>
+            {% if epreuve.résultat == 'Reçu' %}
+            <li><strong>Résultat: </strong><span class="text-success">{{epreuve.résultat}}</span></li>
+            {% else %}
+            <li><strong>Résultat: </strong><span class="text-danger">{{epreuve.résultat}}</span></li>
+            {% endif %}
+            </ul>
+            </div>
+            {% endif %}
+            {% endfor %}
+    </div>
+
+
+</section>
+
+
+{% endblock %}

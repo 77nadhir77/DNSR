@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="liste">
+    <h1 style="margin-bottom: 15px;" class="text-white">Recherche</h1>
+    <div class="search bg-transparent text-white w-100 p-5">
+        <form class="filter-search" method="GET">
+          <div class="filter-search-group" style="display: flex; flex-direction: column;">
+                  {{Filter.form}}  
+          </div>
+          <input type="submit" value="Rechercher" class="btn btn-danger" style="height: 40px; position: relative; top: 20px;">
+        </form>
+    </div>
+    <hr style=" width: 100%; background: #fff;">
+  <div class="table w-100" >
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom d'utilisateur</th>
+            <th>Adresse gmail</th>
+            <th style="text-align: center;">action</th>
+          </tr>
+          
+        </thead>
+        <tbody style="background: #fff;">
+            {% for user in users %}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td style="font-size: 20px; line-height: 45px; display: flex; justify-content: center; align-items: center;"><a href="{% url 'update_user_candidat' user.id %}" class="btn btn-warning">Editer</a><div style="background: #333; width: 2px; height: 30px; margin: 5px;"></div><a href="{% url 'delete_user_candidat' user.id %}" class="btn btn-danger">Supprimer</a></td></td></td>   
+          </tr>         
+          {% endfor %}
+          
+          
+        </tbody>
+      </table>
+    </div>    
+</section>
+
+
+{% endblock %}

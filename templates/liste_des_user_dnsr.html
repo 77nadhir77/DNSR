@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="liste" style="height: 80vh; display: flex; justify-content: center; align-items:center;">
+  <h2 style="text-align: center; color: #fff;">Le compte admin</h2>
+  <div class="table w-100">
+    
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom d'utilisateur</th>
+            <th>Adresse gmail</th>
+            <th style="text-align: center;">action</th>
+          </tr>
+          
+        </thead>
+        <tbody style="background: #fff;">
+            {% for user in users %}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td style="font-size: 20px; line-height: 45px; display: flex; justify-content: center; align-items: center;"><a href="{% url 'update_user_dnsr' user.id %}" class="btn btn-warning">Editer</a></td></td></td>   
+          </tr>         
+          {% endfor %}
+          
+          
+        </tbody>
+      </table>
+    </div>    
+</section>
+
+
+{% endblock %}

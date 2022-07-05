@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<section class="wrap" style="flex-direction: column; line-height: 45px;">
+    <a href="{% url 'create_dwsr' %}" class="btn btn-primary" style="display: block;">Ajouter une délégation pour une wilaya</a>
+<div class="table" style="height: 80vh;">
+   
+<table>
+
+    <thead>
+        <th style="text-align: center;">Id</th>
+        <th style="text-align: center;">Nom d'utilisateur</th>
+        <th style="text-align: center;">Nom</th>
+        <th style="text-align: center;">Wilaya</th>
+        <th  style="text-align: center;">Option</th>
+    </thead>
+    <tbody style="background-color: #FFF;">
+        {% for dwsr in dwsrs %}
+            <tr>
+                <td style="font-size: 20px; text-align: center; line-height: 45px;">{{dwsr.id}}</td>
+                {% if dwsr.user is not None %}
+                <td style="font-size: 20px; text-align: center; line-height: 45px;">{{dwsr.user.username}}</td>
+                {% else %}
+                <td style="font-size: 20px; text-align: center; line-height: 45px;"><span style="color: rgba(255, 0, 0, 0.775);">compte introuvable</span></td>
+                {% endif %}
+                <td  style="font-size:20px; text-align: center; line-height: 45px;">{{dwsr.name}}</td>
+                <td  style="font-size:20px; text-align: center; line-height: 45px;">{{dwsr.wilaya}}</td>
+                {% if dwsr.user is None %}
+                <td style="font-size: 20px; line-height: 45px; display: flex; justify-content: center; align-items: center;"><a href="{% url 'create_dwsr_user' dwsr.id %}" class="btn btn-primary">Créer un compte</a><div style="background: #333; width: 2px; height: 30px; margin: 5px;"></div><a href="{% url 'update_dwsr' dwsr.id %}" class="btn btn-danger">Editer</a><div style="background: #333; width: 2px; height: 30px; margin: 5px;"></div><a href="{% url 'delete_dwsr' dwsr.id %}" class="btn btn-danger">Supprimer</a></td>
+                {% else %}
+                <td style="font-size: 20px; line-height: 45px; display: flex; justify-content: center; align-items: center;"><i class="fa-solid fa-square-check"></i><div style="background: #333; width: 2px; height: 30px; margin: 5px;"></div><a href="{% url 'consulter_stat_dwsr' dwsr.id %}" class="btn btn-info">Consulter statistiques</a><div style="background: #333; width: 2px; height: 30px; margin: 5px;"></div><a href="{% url 'update_dwsr' dwsr.id %}" class="btn btn-danger">Editer</a><div style="background: #333; width: 2px; height: 30px; margin: 5px;"></div><a href="{% url 'delete_dwsr' dwsr.id %}" class="btn btn-danger">Supprimer</a></td></td>
+                {% endif %}
+            </tr>
+        {% endfor %} 
+    </tbody>
+</table>
+</div>
+</section>
+
+{% endblock %}

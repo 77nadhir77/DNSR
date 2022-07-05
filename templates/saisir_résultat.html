@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="contain text-white p-5 w-50" style="margin: 40px auto;">
+<div class="title">Saisir les détails de l'épreuve</div>
+<form style="line-height: 40px;" class="mt-5" action="" method="POST">
+
+    {% csrf_token %}
+
+    {{form}}
+
+    <input class="btn btn-success mt-5" type="submit" value="Confirmer">
+    <a class="btn btn-danger mt-5" href="{% url 'profile_candidat' candidat.id %}">Annuler</a>
+</form>
+
+</div>
+
+
+{% endblock %}

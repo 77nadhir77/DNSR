@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+
+
+
+<h1 style="text-align: center; margin-top: 5px;" >Page Principale</h1>
+<hr>
+
+
+<div class="slider-frame">
+    <div class="slide-images">
+            <div class="img-container">
+                <img src="{% static '/images/pic-slider.jpg' %}">
+            </div>
+            <div class="img-container">
+                <img src="{% static '/images/pic-slider-4.jpg' %}">
+            </div>
+            <div class="img-container">
+                <img src="{% static '/images/pic-slider-3.jpg' %}">
+            </div>
+    </div>
+</div>  
+{% endblock %}

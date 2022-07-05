@@ -1,0 +1,105 @@
+ {% load static %}
+ <!--Navbar-->
+
+ <div class="wrapper sticky-top">
+    <div class="top_navbar">
+      <div id="hamburger" class="hamburger">
+         <div class="one"></div>
+         <div class="two"></div>
+         <div class="three"></div>
+      </div>
+      <div class="top_menu">
+        {% if request.user.dnsr %}
+       <span><strong>Bonjour, </strong>{{request.user.dnsr.name}}</span>
+       {% elif request.user.dwsr %}
+       <span><strong>Bonjour, </strong>{{request.user.dwsr.name}}</span>
+       {% elif request.user.centreexamen %}
+       <span><strong>Bonjour, </strong>{{request.user.centreexamen.nom}}</span>
+       {% elif request.user.candidat %}
+       <span><strong>Bonjour, </strong>{{request.user.candidat.nom}} {{request.user.candidat.prenom}}</span>
+       {% endif %}
+        <div class="logo">
+          {% if request.user.is_authenticated %}
+          <div class="logout-btn"><a href="{% url 'logout' %}"> <span style="font-size: 14px;" class="title">déconnecter</span></a></div>
+          {% else %}
+          <img src="{% static '/images/logo.jpg' %}" alt="DNSR">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <div id="sidebar" class="sidebar">
+        <ul>
+          <li id="drop-menu" class="drop-menu"><a href="#">
+            <i class="fas fa-user"></i><span class="title">Admin</span><div id="sahm" class="sahm"></div>
+            </a>
+            <ul style="display: none;">
+              <li id="drop-menu" class="drop-menu"><a href="{% url 'liste_des_user_dnsr' %}"><i class="fas fa-list-check"></i><span style="font-size: 14px;" class="title">Le compte super admin du DNSR</span></a></li> 
+              <li id="drop-menu" class="drop-menu"><a href="{% url 'liste_des_user_dwsr' %}"><i class="fas fa-list-check"></i><span style="font-size: 14px;" class="title">Gestion des comptes des DWSR</span></a></li>
+              <li id="drop-menu" class="drop-menu"><a href="{% url 'liste_des_user_centre' %}"><i class="fas fa-list-check"></i><span style="font-size: 14px;" class="title">Gestion des comptes des centres d'examen</span></a></li>
+              <li id="drop-menu" class="drop-menu"><a href="{% url 'liste_des_user_candidat' %}"><i class="fas fa-list-check"></i><span style="font-size: 14px;" class="title">Gestion des comptes des candidats</span></a></li>
+            </ul>
+          </li>
+          <hr>
+          <li id="drop-menu" class="drop-menu"><a href="#">
+            <i class="fas fa-list-check"></i><span class="title">gestion des délégation des wilaya</span><div id="sahm" class="sahm"></div>
+            </a>
+            <ul style="display: none;">
+              <li id="drop-menu" class="drop-menu"><a href="{% url 'liste_des_dwsr' %}"><i class="fas fa-list-ul"></i><span style="font-size: 14px;" class="title">Liste de délégation des wilaya</span></a></li>
+              <li id="drop-menu" class="drop-menu"><a href="{% url 'create_dwsr' %}"><i class="fas fa-plus"></i><span style="font-size: 14px;" class="title">Ajouter une délégation de wilaya</span></a></li>   
+            </ul>
+          </li>
+            <hr>
+            <li id="drop-menu" class="drop-menu"><a href="#">
+              <i class="fas fa-list-check"></i><span class="title">gestion des candidats</span><div id="sahm" class="sahm"></div>
+              </a>
+              <ul style="display: none;"> 
+                <li><a href="{% url 'liste_des_candidat' %}">
+                  <i class="fas fa-list-ul"></i><span class="title">liste des candidats</span>
+                </a></li>     
+              </ul>
+            </li>
+            <hr>
+            <li id="drop-menu" class="drop-menu"><a href="#">
+              <i class="fas fa-list-check"></i><span style="font-size: 14px;" class="title">gestion des centres d'examen</span><div id="sahm" class="sahm"></div>
+              </a>
+              <ul style="display: none;">
+                <li><a href="{% url 'liste_centre_examens' %}">
+                  <i class="fas fa-list-ul"></i><span class="title">liste des centres d'examen</span>
+                </a></li>
+              </ul>
+            </li>
+            <hr>
+            <li id="drop-menu" class="drop-menu"><a href="#">
+              <i class="fas fa-list-check"></i><span class="title">gestion des auto-écoles</span><div id="sahm" class="sahm"></div>
+              </a>
+              <ul style="display: none;">
+                <li><a href="{% url 'liste_auto_ecole' %}">
+                  <i class="fas fa-list-ul"></i><span class="title">liste des auto écoles</span>
+                </a></li>     
+              </ul>
+            </li>
+            <hr>
+            <li id="drop-menu" class="drop-menu"><a href="#">
+              <i class="fas fa-list-check"></i><span class="title">gestion des examinateurs</span><div id="sahm" class="sahm"></div>
+              </a>
+              <ul style="display: none;">
+                <li><a href="{% url 'liste_examinateur' %}">
+                  <i class="fas fa-list-ul"></i><span class="title">liste des examinateurs</span>
+                </a></li>     
+              </ul>
+            </li>
+            <hr>
+            <li id="drop-menu" class="drop-menu"><a href="{% url 'index' %}"><i class="fas fa-home"></i><span style="font-size: 14px;" class="title">Page principale</span></a></li>
+            <hr>
+            <li id="drop-menu" class="drop-menu"><a href="/change_password/"><i class="fas fa-gear"></i><span style="font-size: 14px;" class="title">Changer le mot de passe</span></a></li>
+            <hr>
+      </ul>
+
+    </div>
+</div>
+  
+  <!--Navbar-->
+
+
+  <!-- create_examinateur -->

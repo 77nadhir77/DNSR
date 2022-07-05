@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<section class="container" style="background-color: #fff; margin: 15px auto; display: flex; flex-wrap: wrap;">
+    
+    <div class="card-info">
+        <h3>Les informations personnelles</h3>
+        <ul class="mt-5">
+            <li><strong>NIN :</strong> {{candidat.nin}}</li>
+            <li><strong>Le Nom et prénom:</strong> {{candidat.nom}}, {{candidat.prenom}} </li>
+            <li><strong>La wilaya de naissance:</strong> {{candidat.wilaya}}</li>
+            <li><strong>Auto-école:</strong> {{candidat.auto_école}}</li>
+            <li><strong>Age:</strong>{{candidat.age}}</li>
+        </ul>
+    </div>
+    <div class="card-info">
+        <h3>Compte d'utilisateur</h3>
+        {% if candidat.user != None %}
+        <ul class="mt-5">
+            <li><strong>Nom d'utilisateur: </strong>{{candidat.user.username}}</li>
+            <li><strong>Email:</strong>{{candidat.user.email}}</li>
+        </ul>
+        {% else %}
+        <ul>
+            <li><span style="color: red;">Compte Introuvable</span></li>
+            <li><a style="display: block;" href="{% url 'create_candidat_user' candidat.id %}" class="btn btn-outline-warning">Créer le compte</a></li>
+        </ul>
+        {% endif %}
+    </div>
+    <div class="card-info">
+        <h3>Les options</h3>
+        <ul class="mt-5">
+            
+            <li><a style="display: block; margin-top: 5px;" href="{% url 'liste_des_candidat' %}" class="btn btn-outline-success">Retour</a></li>
+        </ul>
+    </div>
+
+
+
+    <div style="color: #333; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;" class="table">
+        <label>Résultats :</label>
+        <table id="tbl_posts">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Epreuve</th>
+              <th>Résultat</th>
+              <th>Examinateur</th>
+              <th>Option</th>
+            </tr>
+          </thead>
+          <tbody id="tbl_posts_body">
+            {% for epreuve in epreuves %}
+            <tr>
+              <td>{{epreuve.date | date}}</td>
+              <td>{{epreuve.nom}}</td>
+              <td>{{epreuve.résultat}}</td>
+              <td>{{epreuve.Examinateur}}</td>
+              <td><a class="btn btn-success" href="{% url 'saisir_résultat' epreuve.id %}">Editer l'épreuve</a></td>
+            </tr>    
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</section>
+
+
+{% endblock %}

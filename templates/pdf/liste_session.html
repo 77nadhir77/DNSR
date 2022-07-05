@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>list_des_sessions_du_jour.PDF</title>
+    </head>
+    <body>
+
+        <h1 style="text-align: center;">Liste des sessions du jour</h1>
+        <h2>{{centre.nom}}</h2>
+        <hr>
+        {% for session in sessions %}
+
+        <span>Session du:</span><strong>{{session.nom}}</strong>
+        <br>
+        <span>Heure de Début :</span>{{session.heureDebut}}
+        <br>
+        <span>Heure de Fin :</span>{{session.heureFin}}
+        <br>
+        <span>candidat: </span> {{session.candidat.nom|upper}} {{session.candidat.prenom|capfirst}}, <span> NIN: </span>{{session.candidat.nin}}
+        <br>
+        <span>Résultat:</span>
+
+        <hr style="background-color: #333; height:15px">
+
+
+        {% endfor %}
+    </body>
+</html>

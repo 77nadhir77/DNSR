@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="contain" style="margin: 15px auto;">
+    <div class="title">Ajouter une auto-école</div>
+      <div class="liste-group">
+        <form method="POST" class="form">
+            {% csrf_token %}
+            {{form}}
+            
+          <div class="button-group mt-5">
+            <input type="submit" class="btn btn-success" value="Sauvgarder" >
+            <input type="reset" class="btn btn-danger" value="Annuler" >
+          </div>
+        </form>
+      </div>
+      
+    </section>
+
+
+
+
+
+
+{% endblock %}

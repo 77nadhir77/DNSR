@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Convocation_pou_examen.PDF</title>
+    </head>
+    <body style="text-align: center;">
+        <h1 style="margin: 10px auto;">Convocation pour le candidat : {{candidat.nom | upper}} {{candidat.prenom | capfirst}}</h1>
+        <br>
+        <hr>
+        <br>
+        <h3 class="m-5">Les sessions: </h3>
+        <br>
+        <br>
+        <div class="table w-100" >
+            <table style="border: solid 2px black;">
+              <thead style="height: 40px;">
+                <tr>
+                  <th>Session</th>
+                  <th>Centre d'examen</th>
+                  <th>Date</th>
+                  <th>Heure de début</th>
+                  <th>Heure de Fin</th>
+                  <th>Résultat</th>
+                </tr>
+                
+              </thead>
+              <tbody style="background: #fff;">
+                  {% for session in sessions %}
+                <tr style="height: 40px;">
+                  <td>{{session.nom}}</td>
+                  <td style="font-size: 80%;">{{session.centre_examen}}</td>
+                  <td>{{session.date}}</td>
+                  <td>{{session.heureDebut}}</td>
+                  <td>{{session.heureFin}}</td>
+                  {% if session.epreuve.résultat != None %}
+                  <td>{{session.epreuve.résultat}}</td>
+                  {% else %}
+                  <td>/</td>
+                  {% endif %}  
+                </tr>         
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>  
+
+    </body>
+</html>

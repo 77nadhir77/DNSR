@@ -1,0 +1,50 @@
+{% load static %}
+<!--Navbar-->
+
+<div class="wrapper sticky-top">
+   <div class="top_navbar">
+     <div id="hamburger" class="hamburger">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+     </div>
+     <div class="top_menu">
+       {% if request.user.dnsr %}
+       <span><strong>Bonjour, </strong>{{request.user.dnsr.name}}</span>
+       {% elif request.user.dwsr %}
+       <span><strong>Bonjour, </strong>{{request.user.dwsr.name}}</span>
+       {% elif request.user.centreexamen %}
+       <span><strong>Bonjour, </strong>{{request.user.centreexamen.nom}}</span>
+       {% elif request.user.candidat %}
+       <span><strong>Bonjour, </strong>{{request.user.candidat.nom}} {{request.user.candidat.prenom}}</span>
+       {% endif %}
+       <div class="logo">
+         {% if request.user.is_authenticated %}
+         <div class="logout-btn"><a href="{% url 'logout' %}"> <span style="font-size: 14px;" class="title">déconnecter</span></a></div>
+         {% else %}
+         <img src="{% static '/images/logo.jpg' %}" alt="DNSR">
+         {% endif %}
+       </div>
+     </div>
+   </div>
+   
+   <div id="sidebar" class="sidebar">
+       <ul>
+           <li id="drop-menu" class="drop-menu"><a href="{% url 'index' %}"><i class="fas fa-home"></i><span style="font-size: 14px;" class="title">Page principale</span></a></li>
+           <hr>
+           <li id="drop-menu" class="drop-menu"><a href="{% url 'session_calendar' %}"><i class="fas fa-calendar"></i><span style="font-size: 14px;" class="title">Calendrier des sessions</span></a></li>
+           <hr>
+           <li id="drop-menu" class="drop-menu"><a href="{% url 'liste_des_sessions_pour_centre' %}"><i class="fas fa-list-ul"></i><span style="font-size: 14px;" class="title">Consulter votre liste des sessions</span></a></li>
+           <hr>
+           <li id="drop-menu" class="drop-menu"><a href="{% url 'liste_des_session_pdf' %}"><i class="fas fa-print"></i><span style="font-size: 14px;" class="title">Imprimer la liste des sessions</span></a></li>
+           <hr>
+           <li id="drop-menu" class="drop-menu"><a href="/change_password/"><i class="fas fa-gear"></i><span style="font-size: 14px;" class="title">Changer le mot de passe</span></a></li>
+        </ul>
+
+   </div>
+</div>
+ 
+ <!--Navbar-->
+
+
+ <!-- create_examinateur -->

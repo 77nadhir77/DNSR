@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<section class="contain" style="margin: 15px auto;">
+  <div class="title">Ajouter un candidat</div>
+    <div class="liste-group">
+      <form method="POST" class="form">
+          {% csrf_token %}
+          <div class="form-row mt-5">
+            <label>Numéro de la carte d'indentitée :&nbsp;&nbsp;</label>{{form.nin}}
+          </div>
+        <div class="form-row mt-5">
+          <div class="form-group col-md-4">
+            <label for="familyname">Prénom&nbsp;&nbsp;</label>{{form.prenom}}
+          </div>
+          <div class="form-group col-md-4">
+            <label>Nom&nbsp;&nbsp;</label>{{form.nom}}
+          </div>
+          <div class="form-group col-md-4">
+            <label for="autoecole">Auto école&nbsp;&nbsp;</label>{{form.auto_école}}
+          </div>
+        </div>
+        <div class="form-row mt-5">
+          <div class="form-group col-md-4">
+            <label for="date">Date naissance :&nbsp;&nbsp;</label>{{form.date_de_naissance}}
+          </div>
+          <div class="form-group col-md-4">
+            <label for="category">Age:&nbsp;&nbsp;</label>{{form.age}}
+          </div>
+          <div class="form-group col-md-4">
+            <label for="category">Catégorie du permis :&nbsp;&nbsp;</label>{{form.categorie_du_permis}}
+          </div>
+        </div>
+        <div class="form-row mt-5">
+          <div class="form-group col-md-4">
+            <label for="wilaya">wilaya :&nbsp;&nbsp;</label><select class="input" name="wilaya" id="wilaya"></select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="commune">commune : &nbsp;&nbsp;</label><select class="input" name="commune" id="commune"></select>
+          </div>
+          <div class="form-group col-md-4">
+          <label for="code_postal">code postal :&nbsp;&nbsp;</label><select class="input" name="code_postal" id="code_postal"></select>
+          </div>
+        </div>
+        <div class="from-row mt-5">
+          <label for="adress">Adresse :&nbsp;&nbsp;</label>{{form.adresse}}
+        </div>
+        <div class="form-row mt-5">
+          <div class="form-group col-md-6">
+            <label for="date-de-reussite">Date de réussite définitive :&nbsp;&nbsp;{{form.date_reussite}}
+          </div>
+          <div class="form-group col-6">
+            <label>Groupage&nbsp;&nbsp;</label>{{form.Group_sanguin}}
+          </div>
+        </div>
+        <div class="button-group">
+          <input type="submit" class="btn btn-success" value="Sauvgarder" >
+          <input type="reset" class="btn btn-danger" value="Annuler" >
+        </div>
+      </form>
+    </div>
+    
+  </section>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="wrap" style="background-color: #333; width: 80%; height: 80vh; border-radius: 10px; margin: 50px auto;">
+    
+    <form class="" method="POST">
+        {% csrf_token %}
+        <h3 style="color: #Fff;">Vous voulez supprimer "{{user.username}}" ?</h3>
+        <div class="button-group mt-5" style="display: flex; justify-content: center;">
+            <input type="submit" class="btn btn-danger w-25" value="Suprimer">
+            <a href="{% url 'liste_des_user_dwsr' %}" class="ml-5 btn btn-success">Annuler</a>
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+{% endblock %}
